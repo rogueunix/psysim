@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>ProgPrac</title>
+    <title>PsySim</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
@@ -19,6 +19,13 @@
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/themes/flat-blue.css">
+
+    <style>
+      .message-list {
+        height: 600px;
+        overflow-y: scroll; 
+      } 
+    </style>
 </head>
 
 <body class="flat-blue">
@@ -31,7 +38,7 @@
                             <i class="fa fa-bars icon"></i>
                         </button>
                         <ol class="breadcrumb navbar-breadcrumb">
-                            <li class="active">ProgPrac</li>
+                            <li class="active">PsySim</li>
                             <li>Patient X</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
@@ -43,15 +50,15 @@
                             <i class="fa fa-times icon"></i>
                         </button>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Prof Phil <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dr. Phil <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
-                                    <img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+                                    <img src="../img/profile/drphil.jpg" class="profile-img">
                                 </li>
                                 <li>
                                     <div class="profile-info">
                                         <h4 class="username">Prof Phil</h4>
-                                        <p>phil@progprac.com</p>
+                                        <p>phil@psysim.com</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
                                             <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
                                         </div>
@@ -68,7 +75,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">
                                 <div class="icon fa fa-user-md"></div>
-                                <div class="title">ProgPrac</div>
+                                <div class="title">PsySim</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -115,50 +122,17 @@
                           </div>
                         </div>
                         <div class="card-body no-padding">
-                          <ul class="message-list" id="message-list">
-                          
-                              <a href="#">
-                                  <li>
-                                      <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                      <div class="message-block">
-                                          <div><span class="username">Subject</span> <span class="message-datetime">12 min ago</span>
-                                          </div>
-                                          <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                      </div>
-                                  </li>
-                              </a>
-                              <a href="#">
-                                  <li>
-                                      <img src="../img/screenshots/login.png" class="profile-img pull-left">
-                                      <div class="message-block">
-                                          <div><span class="username">Therapist</span> <span class="message-datetime">15 min ago</span>
-                                          </div>
-                                          <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                      </div>
-                                  </li>
-                              </a>
-                              <a href="#">
-                                  <li>
-                                      <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                      <div class="message-block">
-                                          <div><span class="username">Subject</span> <span class="message-datetime">2 hour ago</span>
-                                          </div>
-                                          <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                      </div>
-                                  </li>
-                              </a>
-                              <a href="#">
-                                  <li>
-                                      <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                      <div class="message-block">
-                                          <div><span class="username">Subject</span> <span class="message-datetime">1 day ago</span>
-                                          </div>
-                                          <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                      </div>
-                                  </li>
-                              </a>
+                          <ul class="message-list" id="message-list"></ul> 
 
-                          </ul> 
+                          <div class="col-md-12">
+                            <div class="input-group" style="margin-bottom: 10px;">
+                              <input id="sendMessageText" type="text" class="form-control" placeholder="Talk to patient..."/>
+                              <span class="input-group-btn">
+                                <button id="sendMessageBtn" class="btn btn-primary" style="margin-top: 0px;"><i class="fa fa-paper-plane"></i> Send</button>
+                              </span>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -186,7 +160,7 @@
 
         <footer class="app-footer">
             <div class="wrapper">
-                © 2018 Copyright. ProgPrac Inc.
+                © 2018 Copyright. PsySim Inc.
             </div>
         </footer>
 
@@ -222,7 +196,7 @@
                           </a>
                           <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">List group item heading</h5>
+                              <h5 class="mb-1">Depression</h5>
                               <small class="text-muted">3 days ago</small>
                             </div>
                             <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
@@ -230,15 +204,7 @@
                           </a>
                           <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">List group item heading</h5>
-                              <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">List group item heading</h5>
+                              <h5 class="mb-1">ADHD</h5>
                               <small class="text-muted">3 days ago</small>
                             </div>
                             <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
