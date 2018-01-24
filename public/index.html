@@ -103,7 +103,7 @@
                   <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Discovery"/>
+                        <input type="text" id="discoverySearchText" class="form-control" placeholder="Search Discovery"/>
                         <span class="input-group-btn">
                           <button id="discoverySearchBtn" class="btn btn-primary" style="margin-top: 0px;"><i class="fa fa-search"></i> Search</button>
                         </span>
@@ -147,7 +147,27 @@
                           </div>
                         </div>
                         <div class="card-body">
-                          <textarea rows="30" class="form-control"></textarea>
+                          <div class="row">
+                            <div class="col-xs-3">
+                              <img src="../img/profile/boxwell.jpg" style="width:100%;"/> 
+                            </div> 
+                            <div class="col-xs-5">
+                              <h5>Stephen Boxwell</h5> 
+                              <p>
+                                Senior Lecturer, CSE<br/>
+                                <a href="#">boxwell.1@osu.edu</a>
+                              </p>
+                            </div>
+                            <div class="col-xs-4">
+                              <p>Patient Gets Irritated</p>
+                              <h3 id="patientTimer">1:00</h3> 
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <textarea rows="20" class="form-control"></textarea>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -171,46 +191,13 @@
 
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Discovery Search Results</h4>  
+                      <h4 class="modal-title" id="search-title">Discovery Search Results</h4>  
                     </div>
 
                     <div class="modal-body row">
                       <div class="col-md-12">
 
-                        <div class="list-group">
-                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">PTSD</h5>
-                              <small>3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small>Donec id elit non mi porta.</small>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">Schizophrenia</h5>
-                              <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">Depression</h5>
-                              <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">ADHD</h5>
-                              <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                          </a>
-                        </div>
+                        <div class="list-group" id="search-results"></div>
 
                       </div>
                     </div>
