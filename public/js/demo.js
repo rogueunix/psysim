@@ -24,27 +24,27 @@ function search(){
 
 function demoSearchResults(){
   addSearchResult(
-    "Anxiety: WedMD", 
-    "https://www.webmd.com/anxiety-panic/guide/anxiety-disorders#1", 
-    "Jun 12, 2017 - Learn more about anxiety disorders, including types, causes, symptoms, diagnosis, treatment, and prevention."
+    "PTSD: WedMD", 
+    "https://www.webmd.com/mental-health/post-traumatic-stress-disorder#1",
+    "Posttraumatic stress disorder (PTSD), once called shell shock or battle fatigue syndrome, is a serious condition that can develop after a person has experienced or witnessed a traumatic or terrifying event in which serious physical harm occurred or was threatened. PTSD is a lasting consequence of..."
   );
 
   addSearchResult(
-    "Anxiety: Mayo Clinic",
-    "https://www.mayoclinic.org/diseases-conditions/anxiety/symptoms-causes/syc-20350961",
-    "Aug 16, 2017 - Experiencing occasional anxiety is a normal part of life. However, people with anxiety disorders frequently have intense, excessive and persistent worry and fear about everyday situations. Often, anxiety disorders involve repeated episodes of sudden feelings of intense anxiety and fear or terror that reach a ..."
+    "PTSD: Mayo Clinic",
+    "https://www.mayoclinic.org/diseases-conditions/post-traumatic-stress-disorder/symptoms-causes/syc-20355967",
+    "Post-traumatic stress disorder (PTSD) is a mental health condition that's triggered by a terrifying event — either experiencing it or witnessing it. Symptoms may include flashbacks, nightmares and severe anxiety, as well as uncontrollable thoughts about the event. Most people who go through..."
   );
 
   addSearchResult(
-    "Anxiety: NIMH",
-    "https://www.nimh.nih.gov/health/topics/anxiety-disorders/index.shtml",
-    "Anti-anxiety medications help reduce the symptoms of anxiety, panic attacks, or extreme fear and worry. The most common anti-anxiety medications are called benzodiazepines. Benzodiazepines are first-line treatments for generalized anxiety disorder."
+    "PTSD: NIMH",
+    "https://www.nimh.nih.gov/health/topics/post-traumatic-stress-disorder-ptsd/index.shtml",
+    "PTSD is a disorder that develops in some people who have experienced a shocking, scary, or dangerous event. It is natural to feel afraid during and after a traumatic situation. Fear triggers many split-second changes in the body to help defend against danger or to avoid it. This “fight-or-flight” response is a typical reaction..."
   );
 
   addSearchResult(
-    "Anxiety: ADAA",
-    "https://adaa.org/understanding-anxiety",
-    "The term anxiety disorder refers to specific psychiatric disorders that involve extreme fear or worry, and includes generalized anxiety disorder (GAD), panic disorder and panic attacks, agoraphobia, social anxiety disorder, selective mutism, separation anxiety, and specific phobias."
+    "PTSD: ADAA",
+    "https://adaa.org/understanding-anxiety/posttraumatic-stress-disorder-ptsd/symptoms",
+    "PTSD is diagnosed after a person experiences symptoms for at least one month following a traumatic event. However symptoms may not appear until several months or even years later. The disorder is characterized by three main types of symptoms: Re-experiencing the trauma through intrusive distressing recollections of ..."
   );
 }
 
@@ -93,7 +93,8 @@ function runTimer(){
     // If the count down is finished, write some text 
     if (distance < 0) {
       clearInterval(timer);
-      demoMessage("Awkward Silence");
+      addMessageToList("Stephen", "Hello? This time isn't free you know.", "../img/profile/patient.jpg");
+      runTimer();
     }
   }, 1000);
 }
@@ -101,6 +102,13 @@ function runTimer(){
 /**
  * Conversation Handling
  */
+
+var messageId = 0;
+var messages = ["I'm very anxious. I'm finding it difficult to operate normally.",
+                "I'm sleeping less than four hours every night. I am surprsied by loud noises very easily.",
+                "I was in a car crash several weeks ago with my daughter.",
+                "No, but we were both terrified.",
+                "I see."];
 
 addMessageToList("Stephen", "Hello, I'm Stephen", "../img/profile/patient.jpg");
 
@@ -116,8 +124,9 @@ $('#sendMessageText').keypress(function(e) {
 
 function demoMessage(messageText){
   addMessageToList("Dr. Phil", messageText, "../img/profile/drphil.jpg");
-  addMessageToList("Stephen", messageText, "../img/profile/patient.jpg");
+  addMessageToList("Stephen", messages[messageId], "../img/profile/patient.jpg");
   $('#sendMessageText').val('');
+  messageId++;
   runTimer();
 }
 
