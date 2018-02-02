@@ -1,134 +1,108 @@
-$(function() {
-  var ctx, data, myLineChart, options;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#jumbotron-line-chart').get(0).getContext('2d');
-  options = {
-    showScale: false,
-    scaleShowGridLines: false,
-    scaleGridLineColor: "rgba(0,0,0,.05)",
-    scaleGridLineWidth: 0,
-    scaleShowHorizontalLines: false,
-    scaleShowVerticalLines: false,
-    bezierCurve: false,
-    bezierCurveTension: 0.4,
-    pointDot: false,
-    pointDotRadius: 0,
-    pointDotStrokeWidth: 2,
-    pointHitDetectionRadius: 20,
-    datasetStroke: true,
-    datasetStrokeWidth: 4,
-    datasetFill: true,
-    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-  };
-  data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-    datasets: [
-      {
-        label: "My Second dataset",
-        fillColor: "rgba(34, 167, 240,0.2)",
-        strokeColor: "#22A7F0",
-        pointColor: "#22A7F0",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "#22A7F0",
-        data: [28, 48, 40, 45, 76, 65, 90]
-      }
-    ]
-  };
-  myLineChart = new Chart(ctx).Line(data, options);
+/**
+ * Conversation Handling
+ */
+
+sendMessage(); // Initial greeting from patient
+
+function sendMessage(input){
+  var workspaceId = "b26bfb94-1c30-4461-8801-853ac02a574a";
+
+  if(input){
+    addMessageToList("Dr. Phil", input, "/images/profile/drphil.jpg");
+  }
+
+  message(workspaceId, input, function(output){
+    addMessageToList("Stephen", output, "/images/profile/patient.jpg");
+  });
+
+  $('#sendMessageText').val('');
+  runTimer();
+}
+
+function addMessageToList(name, message, img){
+  $('#message-list').append('<a href="#">' +
+    '<li>' +
+      '<img src="' + img + '" class="profile-img pull-left">' +
+      '<div class="message-block">' +
+        '<div>' + 
+          '<span class="username">' + name + '</span> ' +
+          '<span class="message-datetime">' + new Date() + '</span>' +
+        '</div>' +
+        '<div class="message">' + message + '</div>' +
+      '</div>' +
+    '</li>' +
+  '</a>');
+}
+
+/**
+ * Discovery Handling
+ */
+
+function search(){
+  var query = $('#discoverySearchText').val();
+
+  $('#search-title').html("Search Results For: " + query);
+  $('#discoverySearchText').val('');
+  $('#search-results').html('');
+  $('#discoveryModal').modal('show');
+}
+
+/**
+ * Event Handlers
+ */
+
+$('#sendMessageBtn').click(function(){
+  sendMessage($('#sendMessageText').val()); 
 });
 
-$(function() {
-  var ctx, data, myBarChart, option_bars;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#jumbotron-bar-chart').get(0).getContext('2d');
-  option_bars = {
-    showScale: false,
-    scaleShowGridLines: false,
-    scaleBeginAtZero: true,
-    scaleShowGridLines: true,
-    scaleGridLineColor: "rgba(0,0,0,.05)",
-    scaleGridLineWidth: 1,
-    scaleShowHorizontalLines: false,
-    scaleShowVerticalLines: false,
-    barShowStroke: true,
-    barStrokeWidth: 1,
-    barValueSpacing: 7,
-    barDatasetSpacing: 3,
-    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-  };
-  data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-    datasets: [
-      {
-        label: "My First dataset",
-        fillColor: "rgba(26, 188, 156,0.6)",
-        strokeColor: "#1ABC9C",
-        pointColor: "#1ABC9C",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "#1ABC9C",
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }, {
-        label: "My Second dataset",
-        fillColor: "rgba(34, 167, 240,0.6)",
-        strokeColor: "#22A7F0",
-        pointColor: "#22A7F0",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "#22A7F0",
-        data: [28, 48, 40, 19, 86, 27, 90]
-      }
-    ]
-  };
-  myBarChart = new Chart(ctx).Bar(data, option_bars);
+$('#sendMessageText').keypress(function(e){
+  if(e.which == 13){
+    sendMessage($('#sendMessageText').val()); 
+  }
 });
 
-$(function() {
-  var ctx, data, myLineChart, options;
-  Chart.defaults.global.responsive = true;
-  ctx = $('#jumbotron-line-2-chart').get(0).getContext('2d');
-  options = {
-    showScale: false,
-    scaleShowGridLines: false,
-    scaleGridLineColor: "rgba(0,0,0,.05)",
-    scaleGridLineWidth: 0,
-    scaleShowHorizontalLines: false,
-    scaleShowVerticalLines: false,
-    bezierCurve: false,
-    bezierCurveTension: 0.4,
-    pointDot: false,
-    pointDotRadius: 0,
-    pointDotStrokeWidth: 2,
-    pointHitDetectionRadius: 20,
-    datasetStroke: true,
-    datasetStrokeWidth: 3,
-    datasetFill: true,
-    legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-  };
-  data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-    datasets: [
-      {
-        label: "My First dataset",
-        fillColor: "rgba(26, 188, 156,0.2)",
-        strokeColor: "#1ABC9C",
-        pointColor: "#1ABC9C",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "#1ABC9C",
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }, {
-        label: "My Second dataset",
-        fillColor: "rgba(34, 167, 240,0.2)",
-        strokeColor: "#22A7F0",
-        pointColor: "#22A7F0",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "#22A7F0",
-        data: [28, 48, 40, 19, 86, 27, 90]
-      }
-    ]
-  };
-  myLineChart = new Chart(ctx).Line(data, options);
+$('#discoverySearchBtn').click(function(){
+  search();
 });
+
+$('#discoverySearchText').keypress(function(e){
+  if(e.which == 13){
+    search();
+  }
+});
+
+/**
+ * Timer Handling
+ */
+
+var timer;
+runTimer();
+
+function runTimer(){
+
+  clearInterval(timer);
+  $('#patientTimer').html("1:00");
+
+  var countDownDate = new Date();
+  countDownDate.setTime(countDownDate.getTime() + 60*1000);
+  countDownDate = countDownDate.getTime();
+
+  timer = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if(seconds < 10){
+      $('#patientTimer').html(minutes + ":0" + seconds);
+    } else {
+      $('#patientTimer').html(minutes + ":" + seconds);
+    }
+
+    if (distance < 0) {
+      clearInterval(timer);
+      sendMessage();
+      runTimer();
+    }
+  }, 1000);
+}
