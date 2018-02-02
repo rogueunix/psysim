@@ -1,0 +1,68 @@
+extends layout
+
+block content
+  // Search with Discovery
+  .row
+    .col-md-8.col-md-offset-2
+      .input-group
+        input.form-control(type="text", id="discoverySearchText", placeholder="Search Discovery")
+        span.input-group-btn
+          button.btn.btn-primary(id="discoverySearchBtn", style="margin-top: 0px;")
+            i.fa.fa-search 
+            |  Search
+
+  .row.no-margin-bottom
+    // Patient Chat Window
+    .col-md-7
+      .card
+        .card-header
+          .card-title
+            .title
+              i.fa.fa-comments-o
+              |  Patient X
+        .card-body.no-padding
+          ul.message-list(id="message-list")
+          .col-md-12
+            .input-group(style="margin-bottom: 10px;")
+              input.form-control(type="text", id="sendMessageText", placeholder="Talk to patient...")
+              span.input-group-btn
+                button.btn.btn-primary(id="sendMessageBtn", style="margin-top: 0px;")
+                  i.fa.fa-paper-plane
+                  |  Send
+
+    // Doctor's Notes
+    .col-md-5
+      .card
+        .card-header
+          .card-title
+            .title
+              i.fa.fa-notes
+              |  Notes on Patient X
+        .card-body
+          .row
+            .col-xs-3
+              img(src="/images/profile/boxwell.jpg", style="width: 100%")
+            .col-xs-5
+              h5 Stephen Boxwell
+              p
+                | Senior Lecturer, CSE
+                br
+                a(href="#") boxwell.1@osu.edu
+            .col-xs-4
+              p Patient Gets Irritated
+              h3(id="patientTimer") 1:00
+          .row
+            .col-xs-12
+              textarea.form-control(rows="13")
+
+  // Discovery Search Results Modal
+  .modal.fade(id="discoveryModal", tabindex="-1", role="dialog", aria-labelledby="discoveryModal")
+    .modal-dialog.modal-lg(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title(id="search-title") Discovery Search Results
+        .modal-body.row
+          .col-md-12
+            .list-group(id="search-results")

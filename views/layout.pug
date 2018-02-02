@@ -1,0 +1,103 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // Fonts
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400') 
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900')
+    // CSS Libs
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/animate.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/bootstrap-switch.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/checkbox3.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/jquery.dataTables.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/dataTables.bootstrap.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/lib/select2.min.css')
+    // CSS App
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/flat-blue.css')
+    // Custom Style
+    style.
+      .message-list {
+        height: 500px;
+        overflow-y: scroll;
+      }
+  body.flat-blue
+    .app-container
+      .row.content-container
+        nav.navbar.navbar-default.navbar-fixed-top.navbar-top
+          .container-fluid
+            .navbar-header
+              button.navbar-expand-toggle(type="button")
+                i.fa.fa-bars.icon
+              ol.breadcrumb.navbar-breadcrumb
+                li.active PsySim
+                li Patient X
+              button.navbar-right-expand-toggle.pull-right.visible-xs(type="button")
+                i.fa.fa-th.icon
+            ul.nav.navbar-nav.navbar-right
+              button.navbar-right-expand-toggle.pull-right.visible-xs(type="button")
+                i.fa.fa-times.icon
+              li.dropdown.profile
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                  | Dr. Phil
+                  span.caret
+                |
+                ul.dropdown-menu.animated.fadeInDown
+                  li.profile-img
+                    img.profile-img(src='/images/profile/drphil.jpg')
+                  li
+                    .profile-info
+                      h4.username Prof Phil
+                      p phil@psysim.com
+                      .btn-group.margin-bottom-2x(role='group')
+                        button.btn.btn-default(type='button')
+                          i.fa.fa-sign-out
+                          |  Logout
+
+        .side-menu.sidebar-inverse
+          nav.navbar.navbar-default(role="navigation")
+            .side-menu-container
+              .navbar-header
+                a.navbar-brand(href="/")
+                  .icon.fa.fa-user-md
+                  .title PsySim
+                button.navbar-expand-toggle.pull-right.visible-xs(type="button")
+                  i.fa.fa-times.icon
+              ul.nav.navbar-nav
+                li.active
+                  a(href="/")
+                    span.icon.fa.fa-user-md
+                    span.title Trainer
+                li
+                  a(href="#")
+                    span.icon.fa.fa-cog
+                    span.title Settings
+
+
+        // Main Content
+        .container-fluid
+          .side-body.padding-top
+            block content
+            footer.app-footer
+              .wrapper © 2018 Copyright. PsySim Inc.
+
+    // Javascript Libs
+    script(type="text/javascript", src="javascripts/lib/jquery.min.js")
+    script(type="text/javascript", src="javascripts/lib/bootstrap.min.js")
+    script(type="text/javascript", src="javascripts/lib/Chart.min.js")
+    script(type="text/javascript", src="javascripts/lib/bootstrap-switch.min.js")
+    script(type="text/javascript", src="javascripts/lib/jquery.matchHeight-min.js")
+    script(type="text/javascript", src="javascripts/lib/jquery.dataTables.min.js")
+    script(type="text/javascript", src="javascripts/lib/dataTables.bootstrap.min.js")
+    script(type="text/javascript", src="javascripts/lib/select2.full.min.js")
+    script(type="text/javascript", src="javascripts/lib/ace.js")
+    script(type="text/javascript", src="javascripts/lib/mode-html.js")
+    script(type="text/javascript", src="javascripts/lib/theme-github.js")
+    // Javascript
+    script(type="text/javascript", src="javascripts/app.js")
+    script(type="text/javascript", src="javascripts/index.js")
+    // User JS
+    script(type="text/javascript", src="javascripts/demo.js")
