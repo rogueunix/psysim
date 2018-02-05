@@ -1,12 +1,6 @@
 # PsySim 
-## A therapist training simulator written in Node.js
+### A therapist training simulator written in Node.js
 
-Heroku Site
-```
-http://psy-sim.herokuapp.com
-```
+Heroku Site: http://psy-sim.herokuapp.com
 
-Travis Build Status:
-```
-https://travis-ci.org/rogueunix/psysim
-```
+Travis Build Status: https://travis-ci.org/rogueunix/psysim
