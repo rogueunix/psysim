@@ -2,30 +2,41 @@
  * Conversation Handling
  */
 
+const therapist = {
+  name: "Dr. Phil",
+  image: "/images/profile/drphil.jpg"
+}
+
+const workspaceId = "ea449515-d489-495e-bf26-268803124a8b";
+
+const patient = {
+  name: "Stephen",
+  image: "/images/profile/patient.jpg"
+}
+
 sendMessage(); // Initial greeting from patient
 
 function sendMessage(input){
-  var workspaceId = "b26bfb94-1c30-4461-8801-853ac02a574a";
 
   if(input){
-    addMessageToList("Dr. Phil", input, "/images/profile/drphil.jpg");
+    addMessageToList(therapist, input);
   }
 
   message(workspaceId, input, function(output){
-    addMessageToList("Stephen", output, "/images/profile/patient.jpg");
+    addMessageToList(patient, output);
   });
 
   $('#sendMessageText').val('');
   runTimer();
 }
 
-function addMessageToList(name, message, img){
+function addMessageToList(sender, message){
   $('#message-list').append('<a href="#">' +
     '<li>' +
-      '<img src="' + img + '" class="profile-img pull-left">' +
+      '<img src="' + sender.image + '" class="profile-img pull-left">' +
       '<div class="message-block">' +
         '<div>' + 
-          '<span class="username">' + name + '</span> ' +
+          '<span class="username">' + sender.name + '</span> ' +
           '<span class="message-datetime">' + new Date() + '</span>' +
         '</div>' +
         '<div class="message">' + message + '</div>' +

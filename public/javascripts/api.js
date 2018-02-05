@@ -1,5 +1,5 @@
 function message(workspaceId, input, callback){
-  var parameters = {
+  let parameters = {
     workspace_id: workspaceId,
     input: {'text': input}
   }
