@@ -8,3 +8,9 @@ function message(workspaceId, input, callback){
     callback(data.output.text[0]);
   });
 }
+
+function discoveryQuery(query, callback){
+  $.getJSON("api/discovery/query", query, function(data){
+    callback(data.results); 
+  });
+}

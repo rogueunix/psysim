@@ -52,10 +52,25 @@ function addMessageToList(sender, message){
 function search(){
   var query = $('#discoverySearchText').val();
 
-  $('#search-title').html("Search Results For: " + query);
-  $('#discoverySearchText').val('');
-  $('#search-results').html('');
-  $('#discoveryModal').modal('show');
+  discoveryQuery(query, function(results){ 
+    $('#search-title').html("Search Results For: " + query);
+    $('#search-results').html('');
+    $('#discoverySearchText').val('');
+
+    results.forEach(function(result){
+      console.log(result);
+      addSearchResult(result);
+    });
+
+    $('#discoveryModal').modal('show');
+  });
+}
+
+function addSearchResult(result){
+  $('#search-results').append('<a href="#" class="list-group-item">' +
+      '<h4 class="list-group-item-heading">' + result.id + '</h4>' +
+      '<p class="list-group-item-text">Document Sentiment: ' + result.enriched_text.sentiment.document.score + '</p>' +
+    '</a>');
 }
 
 /**
