@@ -26,6 +26,7 @@ function sendMessage(input){
     addMessageToList(patient, output);
   });
 
+  $("#message-list").animate({ scrollTop: $('#message-list').prop("scrollHeight")}, 2000);
   $('#sendMessageText').val('');
   runTimer();
 }
