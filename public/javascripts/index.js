@@ -1,5 +1,5 @@
 /**
- * Conversation Handling
+ * Users/Patients
  */
 
 const therapist = {
@@ -7,23 +7,24 @@ const therapist = {
   image: "/images/profile/drphil.jpg"
 }
 
-const workspaceId = "ea449515-d489-495e-bf26-268803124a8b";
-
 const patient = {
   name: "Stephen",
-  image: "/images/profile/patient.jpg"
+  image: "/images/profile/patient.jpg",
+  workspaceId: "ea449515-d489-495e-bf26-268803124a8b"
 }
 
-sendMessage(); // Initial greeting from patient
+/**
+ * Conversation Handling
+ */
 
-function sendMessage(input){
-
-  if(input){
-    addMessageToList(therapist, input);
+function sendMessage(input, user, callback){
+  if(input && user){
+    addMessageToList(user, input);
   }
 
-  message(workspaceId, input, function(output){
+  message(patient.workspaceId, input, function(output){
     addMessageToList(patient, output);
+    callback(output);
   });
 
   $("#message-list").animate({ scrollTop: $('#message-list').prop("scrollHeight")}, 2000);
@@ -79,12 +80,12 @@ function addSearchResult(result){
  */
 
 $('#sendMessageBtn').click(function(){
-  sendMessage($('#sendMessageText').val()); 
+  sendMessage($('#sendMessageText').val(), therapist); 
 });
 
 $('#sendMessageText').keypress(function(e){
   if(e.which == 13){
-    sendMessage($('#sendMessageText').val()); 
+    sendMessage($('#sendMessageText').val(), therapist); 
   }
 });
 
