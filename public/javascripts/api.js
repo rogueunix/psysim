@@ -1,10 +1,16 @@
+var conversationId;
+
 function message(workspaceId, input, callback){
-  let parameters = {
+  var parameters = {
     workspace_id: workspaceId,
-    input: {'text': input}
+    input: {'text': input},
+    context: {
+      conversation_id: conversationId
+    }
   }
   
   $.getJSON("api/conversation/message", parameters, function(data){
+    conversationId = data.context.conversation_id;
     callback(data.output.text[0]);
   });
 }
