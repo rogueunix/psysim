@@ -8,8 +8,8 @@ const therapist = {
 }
 
 const patient = {
-  name: "Stephen",
-  image: "/images/profile/patient.jpg",
+  name: "Michelle",
+  image: "/images/profile/generic-patient.png",
   workspaceId: "ea449515-d489-495e-bf26-268803124a8b"
 }
 
@@ -129,7 +129,7 @@ function runTimer(){
 
     if (distance < 0) {
       clearInterval(timer);
-      sendMessage();
+      sendMessage("...", therapist);
       runTimer();
     }
   }, 1000);
