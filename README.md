@@ -10,4 +10,5 @@ Travis Build Status: https://travis-ci.org/rogueunix/psysim
 * Add support for multiple patients
   * Add routes for linking to each individual patient
   * Finish node module for patients (data, return random, return specific)
-
+* Need to setup Speech-to-Text / Text-to-Speech. Will make next demo more engaging
+* Possible UI redesign
