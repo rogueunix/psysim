@@ -10,6 +10,7 @@ var settings = require('./routes/settings');
 var api = require('./routes/api');
 var elizabot = require('./routes/elizabot');
 var login = require('./routes/login');
+var patients = require('./routes/patients');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/settings', settings);
 app.use('/api', api);
 app.use('/elizabot', elizabot);
 app.use('/login', login);
+app.use('/patients', patients);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
