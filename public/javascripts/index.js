@@ -29,7 +29,11 @@ function sendMessage(input, user, callback){
 
   $("#message-list").animate({ scrollTop: $('#message-list').prop("scrollHeight")}, 2000);
   $('#sendMessageText').val('');
-  runTimer();
+
+  if(input != "..." && input != ""){
+    emptyResponses = 0; 
+    runTimer();
+  }
 }
 
 function addMessageToList(sender, message){
@@ -104,7 +108,7 @@ $('#discoverySearchText').keypress(function(e){
  */
 
 var timer;
-runTimer();
+var emptyResponses = 0;
 
 function runTimer(){
 
@@ -130,7 +134,13 @@ function runTimer(){
     if (distance < 0) {
       clearInterval(timer);
       sendMessage("...", therapist);
-      runTimer();
+      emptyResponses++;
+
+      if(emptyResponses < 3){
+        runTimer();
+      } else {
+        $('#patientTimer').html("1:00");
+      }
     }
   }, 1000);
 }
