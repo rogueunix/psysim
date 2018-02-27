@@ -9,14 +9,14 @@ function message(workspaceId, input, callback){
     }
   }
   
-  $.getJSON("api/conversation/message", parameters, function(data){
+  $.getJSON("/api/conversation/message", parameters, function(data){
     conversationId = data.context.conversation_id;
     callback(data.output.text[0]);
   });
 }
 
 function discoveryQuery(query, callback){
-  $.getJSON("api/discovery/query", query, function(data){
+  $.getJSON("/api/discovery/query", query, function(data){
     callback(data); 
   });
 }

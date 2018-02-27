@@ -1,16 +1,10 @@
 /**
- * Users/Patients
+ * Users/Patients Handling
  */
 
 const therapist = {
   name: "Dr. Phil",
   image: "/images/profile/drphil.jpg"
-}
-
-const patient = {
-  name: "Michelle",
-  image: "/images/profile/generic-patient.png",
-  workspaceId: "ea449515-d489-495e-bf26-268803124a8b"
 }
 
 /**
