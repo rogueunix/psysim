@@ -14,7 +14,7 @@ describe('getPatient', () => {
     
       expect(patients.getPatient("Michelle")).toMatchObject({
         name: "Michelle",
-        image: "/images/profile/patient.jpg",
+        image: "/images/profile/generic-patient.png",
         workspaceId: "ea449515-d489-495e-bf26-268803124a8b"
       });
     }); 
