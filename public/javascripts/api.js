@@ -17,6 +17,6 @@ function message(workspaceId, input, callback){
 
 function discoveryQuery(query, callback){
   $.getJSON("api/discovery/query", query, function(data){
-    callback(data.results); 
+    callback(data); 
   });
 }

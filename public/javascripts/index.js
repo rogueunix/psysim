@@ -63,20 +63,21 @@ function search(){
     $('#search-results').html('');
     $('#discoverySearchText').val('');
 
-    results.forEach(function(result){
-      console.log(result);
-      addSearchResult(result);
-    });
+	console.log(JSON.parse(results.body));
+    addSearchResults(JSON.parse(results.body));
 
     $('#discoveryModal').modal('show');
   });
 }
 
-function addSearchResult(result){
-  $('#search-results').append('<a href="#" class="list-group-item">' +
-      '<h4 class="list-group-item-heading">' + result.id + '</h4>' +
-      '<p class="list-group-item-text">Document Sentiment: ' + result.enriched_text.sentiment.document.score + '</p>' +
-    '</a>');
+function addSearchResults(results){
+  (results.passages).forEach(function(result){
+	  $('#search-results').append('<a href="#" class="list-group-item">' +
+		  '<h4 class="list-group-item-heading">' + result.document_id + '</h4>' +
+		  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
+		'</a>');
+	  }
+  );
 }
 
 /**
