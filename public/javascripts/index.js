@@ -57,7 +57,7 @@ function addMessageToList(sender, message){
 
 function search(){
   var query = $('#discoverySearchText').val();
-
+  console.log(query);
   discoveryQuery(query, function(results){ 
     $('#search-title').html("Search Results For: " + query);
     $('#search-results').html('');
@@ -71,13 +71,28 @@ function search(){
 }
 
 function addSearchResults(results){
-  (results.passages).forEach(function(result){
-	  $('#search-results').append('<a href="#" class="list-group-item">' +
-		  '<h4 class="list-group-item-heading">' + result.document_id + '</h4>' +
-		  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
-		'</a>');
-	  }
-  );
+	var documentMetadata;
+	discoveryMetadata(function(metadata){
+		documentMetadata = JSON.parse(metadata.body);
+		(results.passages).forEach(function(result){
+			var title, author;
+			console.log(documentMetadata);
+			for(var i = 0; i < documentMetadata.matching_results; i++){
+				if(documentMetadata.results[i].id == result.document_id){
+					title = documentMetadata.results[i].metadata.title;
+					author = documentMetadata.results[i].metadata.author;
+					break;
+				}
+			}
+			console.log(result);
+			console.log(title);
+			console.log(author);
+		  $('#search-results').append('<a href="#" class="list-group-item">' +
+			  '<h4 class="list-group-item-heading">' + title + ": " + author + '</h4>' +
+			  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
+			'</a>');
+		});
+	});	
 }
 
 /**

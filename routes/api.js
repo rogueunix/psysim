@@ -24,4 +24,13 @@ router.get('/discovery/query', function(req, res, next){
   });
 });
 
+router.get('/discovery/metadata', function(req, res, next){
+	discovery.metadata(function(err, response){
+		if(err)
+			res.status(500).json({ error: err });
+		else
+			res.json(response);
+	});
+});
+
 module.exports = router;

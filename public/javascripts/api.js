@@ -20,3 +20,9 @@ function discoveryQuery(query, callback){
     callback(data); 
   });
 }
+
+function discoveryMetadata(callback){
+	$.getJSON("api/discovery/metadata", function(data){
+		callback(data);
+	});
+}	
