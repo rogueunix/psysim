@@ -19,7 +19,7 @@ block content
           .card-title
             .title
               i.fa.fa-comments-o
-              |  Michelle
+                |  #{currentPatient.name}
         .card-body.no-padding
           ul.message-list(id="message-list")
           .col-md-12
@@ -37,15 +37,15 @@ block content
           .card-title
             .title
               i.fa.fa-notes
-              |  Notes on Michelle
+                |  Notes on #{currentPatient.name}
         .card-body
           .row
             .col-xs-3
               img(src="/images/profile/generic-patient.png", style="width: 100%")
             .col-xs-5
-              h5 Michelle
+              h5= currentPatient.name
             .col-xs-4
-              p Michelle Gets Irritated
+              p #{currentPatient.name} Gets Irritated
               h3(id="patientTimer") 1:00
           .row
             .col-xs-12
