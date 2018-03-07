@@ -3,8 +3,8 @@
  */
 
 const therapist = {
-  name: "Dr. Phil",
-  image: "/images/profile/drphil.jpg"
+  name: "Dr. Zoidberg",
+  image: "/images/profile/zoidberg.png"
 }
 
 /**
