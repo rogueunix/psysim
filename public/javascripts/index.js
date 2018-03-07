@@ -65,28 +65,26 @@ function search(){
 }
 
 function addSearchResults(results){
-	var documentMetadata;
-	discoveryMetadata(function(metadata){
-		documentMetadata = JSON.parse(metadata.body);
-		(results.passages).forEach(function(result){
-			var title, author;
-			console.log(documentMetadata);
-			for(var i = 0; i < documentMetadata.matching_results; i++){
-				if(documentMetadata.results[i].id == result.document_id){
-					title = documentMetadata.results[i].metadata.title;
-					author = documentMetadata.results[i].metadata.author;
-					break;
-				}
+	(results.passages).forEach(function(result){
+		var title, author;
+		for(var i = 0; i < results.results.length; i++){
+			if(results.results[i].id == result.document_id){
+				title = results.results[i].metadata.title;
+				author = results.results[i].metadata.author;
+				break;
 			}
-			console.log(result);
-			console.log(title);
-			console.log(author);
-		  $('#search-results').append('<a href="#" class="list-group-item">' +
-			  '<h4 class="list-group-item-heading">' + title + ": " + author + '</h4>' +
-			  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
-			'</a>');
-		});
-	});	
+		}
+		if(title == undefined){
+			title = "Title not found";
+		}
+		if(author == undefined){
+			author = "Author not found";
+		}
+	  $('#search-results').append('<a href="#" class="list-group-item">' +
+		  '<h4 class="list-group-item-heading">' + title + ": " + author + '</h4>' +
+		  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
+		'</a>');
+	});
 }
 
 /**
