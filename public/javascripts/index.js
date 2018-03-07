@@ -114,6 +114,17 @@ $('#discoverySearchText').keypress(function(e){
 });
 
 /**
+ * Rich Text Handling
+ */
+
+tinymce.init({
+  selector: "textarea",
+  plugins : 'advlist autolink link image lists charmap print preview',
+  menubar: "false",
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent'
+});
+
+/**
  * Timer Handling
  */
 
