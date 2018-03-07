@@ -41,20 +41,16 @@ block content
         .card-body
           .row
             .col-xs-3
-              img(src=currentPatient.image, style="width: 100%")
-            .col-xs-5
-              h5= currentPatient.name
+              img(src=currentPatient.image, style="width: 75%")
             .col-xs-4
               p #{currentPatient.name} Gets Irritated
               h3(id="patientTimer") 1:00
+            .col-xs-5
+              p Activate Eliza
+              input(type="checkbox", id="elizaToggle")
           .row
             .col-xs-12
-              textarea.form-control(rows="13")
-          .row
-            .col-xs-4
-              p Get Help From Your Assistant Eliza:
-            .col-xs-8
-              input(type="checkbox", id="elizaToggle")
+              textarea.form-control(rows="14")
 
   // Discovery Search Results Modal
   .modal.fade(id="discoveryModal", tabindex="-1", role="dialog", aria-labelledby="discoveryModal")
