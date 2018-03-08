@@ -5,7 +5,7 @@ Heroku Site: http://psy-sim.herokuapp.com
 
 Travis Build Status: https://travis-ci.org/rogueunix/psysim
 
-## Version 0.2.0 To-Do
-* Add in new patients
-* Need to setup Speech-to-Text / Text-to-Speech. Will make next demo more engaging
-* Possible UI redesign
+## Version 0.3.0 To-Do
+* Text to Speech
+  * Add different voices for each patient.
+  * Give Eliza a voice when enabled.
