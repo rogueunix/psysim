@@ -23,5 +23,5 @@ Travis Build Status: https://travis-ci.org/rogueunix/psysim
   * Contains several possible disorders
   * Selecting one will tell you whether or not you got it right
 * Cleaning Items
-  * Remove logout button from Dr. Zoidberg dropdown
-  * Remove unnecessary settings page
+  * ~~Remove logout button from Dr. Zoidberg dropdown~~
+  * ~~Remove unnecessary settings page~~
