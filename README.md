@@ -13,8 +13,8 @@ Travis Build Status: https://travis-ci.org/rogueunix/psysim
   * Open the returned documents
   * Google Scholar scraper
 * Chatbots
-  * Needs to handle multiple workspaces
-  * Add two more 
+  * ~~Needs to handle multiple workspaces~~
+  * Add one more 
   * Refine everything
 * Diagnostic Toolbox
   * Quick access to tools typically used for diagnosis
