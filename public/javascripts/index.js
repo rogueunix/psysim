@@ -71,6 +71,7 @@ function addSearchResults(results){
 			if(results.results[i].id == result.document_id){
 				title = results.results[i].metadata.title;
 				author = results.results[i].metadata.author;
+				filename = results.results[i].extracted_metadata.filename;
 				break;
 			}
 		}
@@ -80,7 +81,7 @@ function addSearchResults(results){
 		if(author == undefined){
 			author = "Author not found";
 		}
-	  $('#search-results').append('<a href="#" class="list-group-item">' +
+	  $('#search-results').append('<a href="' + filename + '" class="list-group-item" download>' +
 		  '<h4 class="list-group-item-heading">' + title + ": " + author + '</h4>' +
 		  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
 		'</a>');
