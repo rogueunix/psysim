@@ -42,20 +42,16 @@ html
                 i.fa.fa-times.icon
               li.dropdown.profile
                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                  | Dr. Phil
+                  | Dr. Zoidberg
                   span.caret
                 |
                 ul.dropdown-menu.animated.fadeInDown
                   li.profile-img
-                    img.profile-img(src='/images/profile/drphil.jpg')
+                    img.profile-img(src='/images/profile/zoidberg.png')
                   li
                     .profile-info
-                      h4.username Prof Phil
-                      p phil@psysim.com
-                      .btn-group.margin-bottom-2x(role='group')
-                        button.btn.btn-default(type='button')
-                          i.fa.fa-sign-out
-                          |  Logout
+                      h4.username Dr. Zoidberg
+                      p zoidberg@psysim.com
 
         .side-menu.sidebar-inverse
           nav.navbar.navbar-default(role="navigation")
@@ -82,10 +78,6 @@ html
                           each patient in patients
                             li
                               a(href="/patients/" + patient.name)= patient.name
-                li
-                  a(href="/settings")
-                    span.icon.fa.fa-cog
-                    span.title Settings
 
 
         // Main Content
@@ -107,6 +99,7 @@ html
     script(type="text/javascript", src="/javascripts/lib/ace.js")
     script(type="text/javascript", src="/javascripts/lib/mode-html.js")
     script(type="text/javascript", src="/javascripts/lib/theme-github.js")
+    script(type="text/javascript", src="/javascripts/lib/tinymce/tinymce.min.js")
     // Javascript
     script(type="text/javascript", src="/javascripts/app.js")
     script(type="text/javascript", src="/javascripts/theme.js")

@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var settings = require('./routes/settings');
 var api = require('./routes/api');
 var elizabot = require('./routes/elizabot');
 var login = require('./routes/login');
@@ -28,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'documents')));
 
 app.use('/', index);
-app.use('/settings', settings);
 app.use('/api', api);
 app.use('/elizabot', elizabot);
 app.use('/login', login);

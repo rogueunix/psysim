@@ -3,8 +3,8 @@
  */
 
 const therapist = {
-  name: "Dr. Phil",
-  image: "/images/profile/drphil.jpg"
+  name: "Dr. Zoidberg",
+  image: "/images/profile/zoidberg.png"
 }
 
 /**
@@ -18,6 +18,7 @@ function sendMessage(input, user, callback){
 
   message(patient.workspaceId, input, function(output){
     addMessageToList(patient, output);
+    if(textToSpeechEnabled) textToSpeech(output);       
     callback(output);
   });
 
@@ -89,6 +90,68 @@ function addSearchResults(results){
 }
 
 /**
+ * Speech/Text Handling
+ */
+var textToSpeechEnabled = false;
+
+function textToSpeech(input){
+  var msg = new SpeechSynthesisUtterance(input);
+  window.speechSynthesis.speak(msg);
+}
+
+function speechToText(){
+  var recognition = new webkitSpeechRecognition();
+  recognition.start();
+
+  recognition.onstart = function(){
+    $('#speechToTextBtn').toggleClass('btn-info btn-danger');
+    $('#speechToTextBtn').children().toggleClass('fa-microphone-slash fa-microphone'); 
+  }
+
+  recognition.onresult = function(event){
+    var last = event.results.length - 1;
+    var msg = event.results[last][0].transcript;
+    sendMessage(msg, therapist);
+  }
+
+  recognition.onspeechend = function(){
+    recognition.stop();
+    $('#speechToTextBtn').toggleClass('btn-info btn-danger');
+    $('#speechToTextBtn').children().toggleClass('fa-microphone-slash fa-microphone'); 
+  }
+}
+
+if('webkitSpeechRecognition' in window){
+  // Add button to window
+  $('#messageInputGroup').prepend('<span class="input-group-btn">' +
+    '<button class="btn btn-info" id="speechToTextBtn" style="margin-top: 0px;">' +
+      '<i class="fa fa-microphone-slash"></i>' +
+    '</button>' +
+  '</span>');
+
+  // Add event listener to launch speechToText();
+  $('#speechToTextBtn').click(function(){
+    speechToText();
+  });
+}
+
+if('speechSynthesis' in window){
+  // Add button to window
+  $('#messageInputGroup').prepend('<span class="input-group-btn">' +
+    '<button class="btn btn-warning" id="textToSpeechBtn" style="margin-top: 0px;">' +
+      '<i class="fa fa-volume-off"></i>' +
+    '</button>' +
+  '</span>');
+
+  // Add event listener to enable textToSpeech()
+  $('#textToSpeechBtn').click(function(){
+    textToSpeechEnabled = !textToSpeechEnabled;
+    $('#textToSpeechBtn').toggleClass('btn-warning btn-success');
+    $('#textToSpeechBtn').children().toggleClass('fa-volume-off fa-volume-up'); 
+  });
+}
+
+/**
  * Event Handlers
  */
 
@@ -110,6 +173,17 @@ $('#discoverySearchText').keypress(function(e){
   if(e.which == 13){
     search();
   }
+});
+
+/**
+ * Rich Text Handling
+ */
+
+tinymce.init({
+  selector: "textarea",
+  plugins : 'advlist autolink link image lists charmap print preview',
+  menubar: "false",
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent'
 });
 
 /**
