@@ -51,6 +51,16 @@ block content
           .row
             .col-xs-12
               textarea.form-control(rows="14")
+          .row
+            .col-xs-12
+              label(for="diagnosisDropdown") Choose Diagnosis
+              select.form-control(id="diagnosisDropdown")
+                option
+                option(value="Not Diagnosible") Not Diagnosible
+                option(value="Depression") Depression
+                option(value="Narcissism") Narcissism
+                option(value="OCD") OCD
+                option(value="Dependent Personality Disorder") Dependent Personality Disorder
 
   // Discovery Search Results Modal
   .modal.fade(id="discoveryModal", tabindex="-1", role="dialog", aria-labelledby="discoveryModal")
@@ -63,3 +73,31 @@ block content
         .modal-body.row
           .col-md-12
             .list-group(id="search-results")
+
+  // Diagnosis Modals
+  .modal.fade(id="diagnosisModal", tabindex="-1", role="dialog", aria-labelledby="diagnosisModal")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title Are you sure?
+        .modal-body.row
+          .col-md-12
+            p(id="diagnosisSelectionModal")
+          .col-md-12
+            button.btn.btn-primary(id="diagnosisConfirmationBtn" style="margin-right: 10px;") Yes
+            button.btn.btn-danger(type="button", data-dismiss="modal") No
+
+
+  .modal.fade(id="confirmationModal", tabindex="-1", role="dialog", aria-labelledby="confirmationModal")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title(id="confirmationTitle")
+        .modal-body.row
+          .col-md-12
+            p(id="confirmationMessage")
+
