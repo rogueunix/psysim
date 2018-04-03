@@ -50,7 +50,34 @@ block content
               input(type="checkbox", id="elizaToggle")
           .row
             .col-xs-12
-              textarea.form-control(rows="14")
+              .tab.tabs-left(role="tabpanel")
+                ul.nav.nav-tabs(role="tablist")
+                  li.active(role="presentation")
+                    a(href="#notes", aria-controls="notes", role="tab", data-toggle="tab") Notes
+                  li(role="presentation")
+                    a(href="#toolbox", aria-controls="toolbox", role="tab", data-toggle="tab") Toolbox
+                .tab-content
+                  .tab-pane.active(role="tabpanel", id="notes", style="padding: 0px 5px;")
+                    textarea.form-control(rows="14")
+                  .tab-pane(role="tabpanel", id="toolbox", style="padding: 0px 5px;")
+                    .list-group.toolbox
+                      .list-group-item
+                        h4.list-group-item-heading Depression Identification
+                        p.list-group-item-text This information can only exist with a kind donation from the Ohio Wexner Medical Center ($$$).
+                      .list-group-item
+                        h4.list-group-item-heading Narcissism Identification
+                        p.list-group-item-text This information can only exist with a kind donation from the Ohio Wexner Medical Center ($$$).
+                      .list-group-item
+                        h4.list-group-item-heading OCD Identification
+                        p.list-group-item-text This information can only exist with a kind donation from the Ohio Wexner Medical Center ($$$).
+                      .list-group-item
+                        h4.list-group-item-heading Not Diagnosable Identification
+                        p.list-group-item-text This information can only exist with a kind donation from the Ohio Wexner Medical Center ($$$).
+                      .list-group-item
+                        h4.list-group-item-heading Dependent Personality Disorder Identification
+                        p.list-group-item-text This information can only exist with a kind donation from the Ohio Wexner Medical Center ($$$).
+
+
           .row
             .col-xs-12
               label(for="diagnosisDropdown") Choose Diagnosis
