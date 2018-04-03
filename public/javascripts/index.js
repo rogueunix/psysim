@@ -151,6 +151,35 @@ if('speechSynthesis' in window){
   });
 }
 
+
+/**
+ * Diagnosis Handling
+ */
+var mostRecentDiagnosis = null;
+
+$('#diagnosisDropdown').on('select2:select', function(e){
+  $('#diagnosisDropdown').val('');
+  $('#diagnosisDropdown').trigger('change');
+
+  mostRecentDiagnosis = e.params.data.text;
+  var message = "Do you believe the patient has " + mostRecentDiagnosis + "?";
+  $('#diagnosisSelectionModal').html(message);
+  $("#diagnosisModal").modal('show');
+});
+
+$("#diagnosisConfirmationBtn").click(function(){
+  if(mostRecentDiagnosis == patient.diagnosis){
+    $("#confirmationTitle").html("Congratulations!");
+    $("#confirmationMessage").html("You got the diagnosis correct! Give yourself a pat on the back.");
+  } else {
+    $("#confirmationTitle").html("Sorry, that is incorrect");
+    $("#confirmationMessage").html("Your diagnosis was not correct. Please feel free to continue talking to your patient and try again.");
+  }
+
+  $("#diagnosisModal").modal('hide');
+  $('#confirmationModal').modal('show');
+});
+
 /**
  * Event Handlers
  */
