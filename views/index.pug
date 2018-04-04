@@ -73,6 +73,20 @@ block content
                       a.list-group-item(data-toggle="modal", data-target="#dependentModal")
                         h4.list-group-item-heading Dependent Personality Disorder DSM
                         p.list-group-item-text Diagnostic assessment for Dependent Personality Disorder
+                      a.list-group-item(data-toggle="modal", data-target="#ppdModal")
+                        h4.list-group-item-heading Paranoid Personality Disorder DSM
+                        p.list-group-item-text Diagnostic assessment for Paranoid Personality Disorder
+                      a.list-group-item(data-toggle="modal", data-target="#spdModal")
+                        h4.list-group-item-heading Schizoid Personality Disorder DSM
+                        p.list-group-item-text Diagnostic assessment for Schizoid Personality Disorder
+                      a.list-group-item(data-toggle="modal", data-target="#apdModal")
+                        h4.list-group-item-heading Anti-Social Personality Disorder DSM
+                        p.list-group-item-text Diagnostic assessment for Anti-Social Personality Disorder
+                      a.list-group-item(data-toggle="modal", data-target="#bpdModal")
+                        h4.list-group-item-heading Borderline Personality Disorder DSM
+                        p.list-group-item-text Diagnostic assessment for Borderline Personality Disorder
+
+
           .row
             .col-xs-12
               label(for="diagnosisDropdown") Choose Diagnosis
@@ -82,10 +96,9 @@ block content
                 option(value="Depression") Depression
                 option(value="Narcissism") Narcissism
                 option(value="OCD") OCD
-                option(value="Dependent Personality Disorder") Dependent Personality Disorder
+                option(value="DPD") Dependent Personality Disorder
                 option(value="PPD") Paranoid Personality Disorder
                 option(value="SPD") Schizoid Personality Disorder
-                option(value="StPD") Schizotypal Personality Disorder
                 option(value="APD") Anti-Social Personality Disorder
                 option(value="BPD") Borderline Personality Disorder
 
@@ -266,3 +279,86 @@ block content
                 | himself or herself 
               li urgently seeks another relationship as a source of care and support when a close relationship ends 
               li is unrealistically preoccupied with fears of being left to take care of himself or herself
+
+  .modal.fade(id="ppdModal", tabindex="-1", role="dialog")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title Paranoid Personality Disorder (DSM-IV criteria)
+        .modal-body.row
+          .col-md-12
+            ul
+              li Suspects, without sufficient basis, that others are exploiting, harming, or deceiving him or her
+              li Is preoccupied with unjustified doubts about the loyalty or trustworthiness of friends or associates 
+              li Is reluctant to confide in others because of unwarranted fear that the information will be used maliciously against him or her
+              li Reads hidden demeaning or threatening meanings into benign remarks or events
+              li Persistently bears grudges, i.e., is unforgiving of insults, injuries, or slights 
+              li Perceives attacks on his or her character or reputation that are not apparent to others and is quick to react angrily or to counterattack 
+              li Has recurrent suspicions, without justification, regarding fidelity of spouse or sexual partner 
+
+  .modal.fade(id="spdModal", tabindex="-1", role="dialog")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title Schizoid Personality Disorder (DSM-IV criteria)
+        .modal-body.row
+          .col-md-12
+            ul
+              li Neither desires nor enjoys close relationships, including being part of a family 
+              li Almost always chooses solitary activities
+              li Has little, if any, interest in having sexual experiences with another person
+              li Takes pleasure in few, if any, activities
+              li Lacks close friends or confidants other than first-degree relatives 
+              li Appears indifferent to the praise or criticism of others 
+              li Shows emotional coldness, detachment, or flattened affectivity
+
+  .modal.fade(id="apdModal", tabindex="-1", role="dialog")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title Anti-Social Personality Disorder (DSM-IV criteria)
+        .modal-body.row
+          .col-md-12
+            ul
+              li There is a pervasive pattern of disregard for and violation of the rights of others occurring since age 15 years, as indicated by three (or more) of the following:
+              ol
+                li Failure to conform to social norms with respect to lawful behaviors as indicated by repeatedly performing acts that are grounds for arrest
+                li Deceitfulness, as indicated by repeated lying, use of aliases, or conning others for personal profit or pleasure
+                li Impulsivity or failure to plan ahead
+                li Irritability and aggressiveness, as indicated by repeated physical fights or assaults
+                li Reckless disregard for safety of self or others
+                li Consistent irresponsibility, as indicated by repeated failure to sustain consistent work behavior or honor financial obligations
+                li Lack of remorse, as indicated by being indifferent to or rationalizing having hurt, mistreated, or stolen from another.
+              li The individual is at least age 18 years.
+              li There is evidence of conduct disorder with onset before age 15 years.
+              li The occurrence of antisocial behavior is not exclusively during the course of schizophrenia or a manic episode.
+  .modal.fade(id="bpdModal", tabindex="-1", role="dialog")
+    .modal-dialog(role="document")
+      .modal-content
+        .modal-header
+          button.close(type="button", data-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+          h4.modal-title Borderline Personality Disorder (DSM-IV criteria)
+        .modal-body.row
+          .col-md-12
+            p A pervasive pattern of instability of interpersonal relationships, self-image, and affects, and marked impulsivity beginning by early adulthood and present in a variety of contexts, as indicated by five (or more) of the following:
+            ul
+              li 
+                | Frantic efforts to avoid real or imagined abandonment. 
+                | Note: Do not include suicidal or self-mutilating behavior covered in Criterion 5. 
+              li A pattern of unstable and intense interpersonal relationships characterized by alternating between extremes of idealization and devaluation 
+              li Identity disturbance: markedly and persistently unstable self-image or sense of self 
+              li
+                | Impulsivity in at least two areas that are potentially self-damaging (e.g., spending, sex, Substance Abuse, reckless driving, binge eating). 
+                | Note: Do not include suicidal or self-mutilating behavior covered in Criterion 5. 
+              li Recurrent suicidal behavior, gestures, or threats, or self-mutilating behavior 
+              li Affective instability due to a marked reactivity of mood (e.g., intense episodic dysphoria, irritability, or anxiety usually lasting a few hours and only rarely more than a few days) 
+              li Chronic feelings of emptiness 
+              li Inappropriate, intense anger or difficulty controlling anger (e.g., frequent displays of temper, constant anger, recurrent physical fights) 
+              li Transient, stress-related paranoid ideation or severe dissociative symptoms
