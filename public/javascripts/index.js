@@ -17,6 +17,7 @@ function sendMessage(input, user, callback){
   }
 
   message(patient.workspaceId, input, function(output){
+    if(output == undefined) output = "Goodbye";
     addMessageToList(patient, output);
     if(textToSpeechEnabled) textToSpeech(output);       
     callback(output);
@@ -72,6 +73,7 @@ function addSearchResults(results){
 			if(results.results[i].id == result.document_id){
 				title = results.results[i].metadata.title;
 				author = results.results[i].metadata.author;
+				filename = results.results[i].extracted_metadata.filename;
 				break;
 			}
 		}
@@ -81,7 +83,7 @@ function addSearchResults(results){
 		if(author == undefined){
 			author = "Author not found";
 		}
-	  $('#search-results').append('<a href="#" class="list-group-item">' +
+	  $('#search-results').append('<a href="' + filename + '" class="list-group-item" download>' +
 		  '<h4 class="list-group-item-heading">' + title + ": " + author + '</h4>' +
 		  '<p class="list-group-item-text">'+result.passage_text.replace(/<\/?[^>]+(>|$)/g, "")+'</p>' +
 		'</a>');
@@ -149,6 +151,35 @@ if('speechSynthesis' in window){
     $('#textToSpeechBtn').children().toggleClass('fa-volume-off fa-volume-up'); 
   });
 }
+
+
+/**
+ * Diagnosis Handling
+ */
+var mostRecentDiagnosis = null;
+
+$('#diagnosisDropdown').on('select2:select', function(e){
+  $('#diagnosisDropdown').val('');
+  $('#diagnosisDropdown').trigger('change');
+
+  mostRecentDiagnosis = e.params.data.text;
+  var message = "Do you believe the patient has " + mostRecentDiagnosis + "?";
+  $('#diagnosisSelectionModal').html(message);
+  $("#diagnosisModal").modal('show');
+});
+
+$("#diagnosisConfirmationBtn").click(function(){
+  if(mostRecentDiagnosis == patient.diagnosis){
+    $("#confirmationTitle").html("Congratulations!");
+    $("#confirmationMessage").html("You got the diagnosis correct! Give yourself a pat on the back.");
+  } else {
+    $("#confirmationTitle").html("Sorry, that is incorrect");
+    $("#confirmationMessage").html("Your diagnosis was not correct. Please feel free to continue talking to your patient and try again.");
+  }
+
+  $("#diagnosisModal").modal('hide');
+  $('#confirmationModal').modal('show');
+});
 
 /**
  * Event Handlers

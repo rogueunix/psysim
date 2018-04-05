@@ -24,6 +24,10 @@ html
         height: 500px;
         overflow-y: scroll;
       }
+      .toolbox {
+        height: 300px; 
+        overflow-y: scroll;
+      }
   body.flat-blue
     .app-container
       .row.content-container
@@ -52,10 +56,6 @@ html
                     .profile-info
                       h4.username Dr. Zoidberg
                       p zoidberg@psysim.com
-                      .btn-group.margin-bottom-2x(role='group')
-                        button.btn.btn-default(type='button')
-                          i.fa.fa-sign-out
-                          |  Logout
 
         .side-menu.sidebar-inverse
           nav.navbar.navbar-default(role="navigation")
@@ -82,10 +82,6 @@ html
                           each patient in patients
                             li
                               a(href="/patients/" + patient.name)= patient.name
-                li
-                  a(href="/settings")
-                    span.icon.fa.fa-cog
-                    span.title Settings
 
 
         // Main Content
@@ -116,7 +112,8 @@ html
       const patient = {
         name: "#{currentPatient.name}",
         image: "#{currentPatient.image}",
-        workspaceId: "#{currentPatient.workspaceId}"
+        workspaceId: "#{currentPatient.workspaceId}",
+        diagnosis: "#{currentPatient.diagnosis}"
       }
     script(type="text/javascript", src="/javascripts/elizabot.js")
     script(type="text/javascript", src="/javascripts/api.js")
