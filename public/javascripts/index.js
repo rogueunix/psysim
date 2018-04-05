@@ -17,6 +17,7 @@ function sendMessage(input, user, callback){
   }
 
   message(patient.workspaceId, input, function(output){
+    if(output == undefined) output = "Goodbye";
     addMessageToList(patient, output);
     if(textToSpeechEnabled) textToSpeech(output);       
     callback(output);
