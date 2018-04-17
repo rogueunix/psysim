@@ -6,7 +6,7 @@ const eliza = {
 }
 
 function elizaStart(){
-  $.get("elizabot/start", function(data){
+  $.get("/elizabot/start", function(data){
     sendMessage(data, eliza, function(output){
       elizaMessaging(output);
     });
@@ -15,7 +15,7 @@ function elizaStart(){
 
 function elizaMessaging(botOutput){
   elizaRunning = setInterval(function(){
-    $.get("elizabot/message", {input: botOutput}, function(data){
+    $.get("/elizabot/message", {input: botOutput}, function(data){
       sendMessage(data, eliza, function(output){
         botOutput = output; 
       }); 
@@ -24,7 +24,7 @@ function elizaMessaging(botOutput){
 }
 
 function elizaEnd(callback){
-  $.get("elizabot/end", function(data){
+  $.get("/elizabot/end", function(data){
     sendMessage(data, eliza);
     clearInterval(elizaRunning);
   });
